@@ -1,0 +1,21 @@
+snippet dijkstra_heap "优先队列优化的Dijkstra" b
+void dijkstra(int s){
+	for(int i=1;i<=n;i++){
+		dis[i]=inf;
+	}
+	dis[s]=0;
+	q.push(make_pair(0,s));
+	while(!q.empty()){
+		int now=q.top().second;
+		q.pop();
+		if(vis[now])continue;
+		vis[now]=1;
+		for(int i=head[now];i!=-1;i=e[i].next){
+			if(dis[e[i].v]>dis[now]+e[i].w){
+				dis[e[i].v]=dis[now]+e[i].w;
+				q.push(make_pair(dis[e[i].v],e[i].v));
+			}
+		}
+	}
+}
+endsnippet

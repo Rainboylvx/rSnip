@@ -38,10 +38,14 @@ Plug 'Rainboylvx/rSnip'
 
 ### 基础
 
-| 算法                    | 触发     |
-|-------------------------|----------|
-| 二分查找:第一个大于     | first_g  |
-| 二分查找:第一个大于等于 | first_ge |
+ | 算法                    | 触发     | 位置                           |
+ |-------------------------|----------|--------------------------------|
+ | 二分查找:第一个大于     | first_g  | base/二分.snippets             |
+ | 二分查找:第一个大于等于 | first_ge | base/二分.snippets             |
+ | 4个方向                 | fx4      | algorithm/search/base.snippets |
+ | 8个方向                 | fx8      | algorithm/search/base.snippets |
+ | 方向-类                 | fx_class | algorithm/search/base.snippets |
+ | 是否在地图内            | in_map   | algorithm/search/base.snippets |
 
 ## 数据结构
 

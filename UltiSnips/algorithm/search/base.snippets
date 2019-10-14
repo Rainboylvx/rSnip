@@ -1,0 +1,66 @@
+# 提供常用的[搜索用的]代码
+#
+# | 触发 | 描述    |
+# |------|---------|
+# | fx4  | 4个方向 |
+# | fx8  | 8个方向 |
+# | fx_class  | 方向-类|
+# | in_map| 地图内 |
+
+snippet fx4 "4个方向" b
+/* 顺时针-4个方向 */
+int fx[][2] = { {-1,0}, {0,1}, {1,0}, {0,-1} };
+endsnippet
+
+snippet fx8 "8个方向" b
+/* 顺时针-8个方向 */
+int fx[][2] = { {-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1} };
+endsnippet
+
+snippet fx_class "方向-类" b
+class fx {
+    int fx4[4][2] = { {-1,0}, {0,1}, {1,0}, {0,-1} };
+    int fx8[8][2] = { {-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1} };
+    
+    template<class UnaryPredicate>
+        void forEach(int fx[][2],int len,int sx,int sy,UnaryPredicate p){
+            int i;
+            for(i=0;i<len;i++){
+                p(fx[i][0]+sx,fx[i][1]+sy);
+            }
+        }
+    public:
+	/* 遍历u周围的点 */
+    template<class UnaryPredicate>
+        void forEach_fx4(int sx,int sy,UnaryPredicate p){
+            forEach(fx4, 4, sx,sy,p);
+        }
+
+    template<class UnaryPredicate>
+        void forEach_fx8(int sx,int sy,UnaryPredicate p){
+            forEach(fx8, 8, sx,sy,p);
+        }
+};
+endsnippet
+
+snippet in_map "in_map" b
+/* 仿函数 */
+struct in_map {
+    int min_x,max_x,min_y,max_y;
+
+    in_map(){ min_x=max_x=min_y=max_y=0;}
+    in_map( int x0, int x1, int y0, int y1 ): min_x(x0),max_x(x1),min_y(y0),max_y(y1){}
+
+	/* 设置边界*/
+    void set( int x0, int x1, int y0, int y1 ){
+        min_x = x0 , max_x = x1 ,min_y = y0 ,max_y = y1;
+    }
+
+    bool operator()(int x,int y){
+        if( x >= min_x && x<=max_x && y >= min_y && y <=max_y)
+            return 1;
+        return 0;
+    }
+};
+endsnippet
+

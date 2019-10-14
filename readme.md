@@ -31,10 +31,12 @@ Plug 'Rainboylvx/rSnip'
 
 ### 常用
 
-| 描述           | 触发  | 位置                 |
-|----------------|-------|----------------------|
-| 条件编译:debug | debug | base/debug.snippets  |
-| 常用宏         | def   | base/define.snippets |
+| 描述           | 触发   | 位置                 |
+|----------------|--------|----------------------|
+| 条件编译:debug | debug  | base/debug.snippets  |
+| 常用宏         | def    | base/define.snippets |
+| 快读           | read   | base/快读.snippets   |
+| 超级快读       | fastio | base/快读.snippets   |
 
 ### 基础
 

@@ -12,7 +12,7 @@ namespace BCJ {
 		return fa[x];
 	}
 	
-	void union(int x,int y){ //合并
+	void merge(int x,int y){ //合并
 		int fx = find(x);
 		int fy = find(y);
 		fa[fx] = fy;

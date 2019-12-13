@@ -48,6 +48,7 @@ Plug 'Rainboylvx/rSnip'
  | 8个方向                 | fx8      | algorithm/search/base.snippets |
  | 方向-类                 | fx_class | algorithm/search/base.snippets |
  | 是否在地图内            | in_map   | algorithm/search/base.snippets |
+ | 离散化                  | lsh      | base/离散化.snippets           |
 
 ## 数据结构
 

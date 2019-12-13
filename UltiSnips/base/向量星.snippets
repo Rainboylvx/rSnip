@@ -33,3 +33,10 @@ void addEdge(int u,int v){
 ${0}
 endsnippet
 
+snippet ef "向量星 邻接点遍历" b
+int i;
+for(i = head[u]; ~i ; i = e[i].next){
+	int &v = e[i].v;
+	$0
+}
+endsnippet

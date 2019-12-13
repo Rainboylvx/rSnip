@@ -28,6 +28,7 @@ def tranSeq2(inp,sep=''):
 	return temp.join(a)+sep
 endglobal
 
+
 # printf
 snippet "pr(\w+)? ((\S+ )*\S+)( )?" "printf" br
 printf("${1:`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`}${2:\n}",`!p snip.rv=tranSeq(match.group(2))`);
@@ -38,12 +39,7 @@ snippet "sc(\w+)? ((\S+ )*\S+)( )?" "scanf" ir
 scanf("`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`",`!p snip.rv=tranSeq(match.group(2),'' if match.group(1)=='s' else '&')`);
 endsnippet
 
-# for
-snippet "f(\w+)" "for[iter]" br
-for(`!p snip.rv=match.group(1)`=1;`!p snip.rv=match.group(1)`<${1:=}${2:n};`!p snip.rv=match.group(1)`++){
-	$0
-}
-endsnippet
+
 
 snippet "func (\w+)?" "定义函数" br 
 ${1:int} `!p snip.rv=match.group(1)`(${2: 参数}){
@@ -72,13 +68,29 @@ snippet sn  "代码模板" b
 * problem: ${1: online_judge}-${2:_id }
 *----------------*/
 #include <bits/stdc++.h>
+#define For(i,start,end) for(i = start ;i <= end; ++i)
+#define Rof(i,start,end) for(i = start ;i >= end; --i)
+#define Each_e(u)	for(i = head[u]; ~i ; i = e[i].next)
 using namespace std;
 
-$3
+/* ======= 全局变量 =======*/
+int n,m;
+
+void init(){
+	${3: xlx_init(); }
+}
+/* ======= 全局变量 END =======*/
+
 
 int main(){
-	$0
-	return 0;
+    clock_t program_start_clock = clock(); //开始记时
+    //===================
+    init();
+    $0
+
+    //=================== 
+    fprintf(stderr,"\n Total Time: %lf ms",double(clock()-program_start_clock)/(CLOCKS_PER_SEC / 1000));
+    return 0;
 }
 endsnippet
 

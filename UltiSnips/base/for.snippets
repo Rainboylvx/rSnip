@@ -1,0 +1,100 @@
+# 
+# 有关for的 snip
+#
+
+global !p
+def forArgument(args):
+	[name,start,end,dec] = args
+	a = name if name !='' else 'i'
+	b = start if start != '' else '1'
+	c = end if end != '' else 'n'
+	d = '++' + a
+	if dec == '-':
+		d = '--' + a
+	compare_flag = '<=' if d[0] =='+' else '>='
+	return "{i}={start};{i}{compare_flag}{end};{inc}".format(i=a,start=b,end=c,inc=d,compare_flag=compare_flag)
+endglobal
+
+global !p
+def shorForArugments(args,FOR=True):
+	[name,start,end] = args
+	name  = name if name !='' else 'i'
+	start = start if start != '' else '1' if FOR else 'n'
+	end   = end if end != '' else 'n' if FOR else '1'
+	return "{name},{start},{end}".format(name=name,start=start,end=end)
+endglobal
+# for
+snippet "F(\w*) *(\S*) +(\S+) *(-*)" "f[iter] start end [-]" br
+for(`!p snip.rv=forArgument(match.groups())`){
+	$0
+}
+endsnippet
+
+# define for i,1,n
+snippet "fo +(\S+) +(\S+) +(\S+) *" "fo(i,1,n) " ir
+For(`!p snip.rv=shorForArugments(match.groups())`){
+	$0
+}
+endsnippet
+
+# define for i,[1],n
+snippet "fo +(\S+) +(\S+) *" "fo(i,[1],n) " ir
+For(`!p snip.rv=shorForArugments(['']+list(match.groups()))`){
+	$0
+}
+endsnippet
+
+# define for [i],[1],n
+snippet "fo +(\S+) *" "fo(i,[1],n) " ir
+For(`!p snip.rv=shorForArugments(['','']+list(match.groups()))`){
+	$0
+}
+endsnippet
+
+# define for [i],[1],[n]
+snippet "fo *" "fo(i,[1],n) " ir
+For(i,1,n){
+	$0
+}
+endsnippet
+
+
+# ============== reverse for
+
+# define rof i,1,n
+snippet "ro +(\S+) +(\S+) +(\S+) *" "ro(i,n,1) " ir
+Rof(`!p snip.rv=shorForArugments(match.groups())`){
+	$0
+}
+endsnippet
+
+# define rof i,[1],n
+snippet "ro +(\S+) +(\S+) *" "ro(i,n,[1]) " ir
+Rof(`!p snip.rv=shorForArugments(list(match.groups())+['1'])`){
+	$0
+}
+endsnippet
+
+# define rof [i],n,[1]
+snippet "ro +(\S+) *" "ro([i],n,[1]) " ir
+Rof(`!p snip.rv=shorForArugments(['']+list(match.groups())+['1'])`){
+	$0
+}
+endsnippet
+
+# define rof [i],[1],[n]
+snippet "ro *" "fo(i,[1],n) " ir
+Rof(i,n,1){
+	$0
+}
+endsnippet
+
+
+## edge_u for
+
+snippet ee "Each_e(u)" b
+Each_e(u) {
+	$0
+}
+endsnippet
+

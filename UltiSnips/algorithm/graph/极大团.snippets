@@ -1,8 +1,6 @@
 snippet jidatuan "极大团计数" b
-
-
 /* ======= 全局变量 =======*/
-const int maxn = 1e3+5;
+const int maxn = 130;
 int n,m;
 int __SET__NOW[maxn][maxn]={0}; //集合
 int __SET__MAY[maxn][maxn]={0}; //集合
@@ -18,7 +16,9 @@ namespace set_opt {
         return set_name[0];
     }
 
-    void U(int src[],int dst[],int v) { //合并
+    //合并
+    //将原来的数据复制一遍,再加入一个新的点
+    void U(int src[],int dst[],int v) { 
         int cnt = count(src);
         int i;
         for(i=1;i<=cnt;i++){
@@ -44,19 +44,24 @@ namespace set_opt {
 }
 /* ================= 集合操作 end =================*/
 
+
 int max_clique_cnt = 0;
 void dfs(int dep){
     if( !set_opt::count(__SET__MAY[dep])  &&  !set_opt::count(__SET__USED[dep])){
         ++max_clique_cnt;
-        #ifdef DEBUG
-            print_max_clique(__SET__NOW[dep]);
-        #endif
         return;
+
     }
     int i,j;
     int may_count = set_opt::count(__SET__MAY[dep]);
+    int u = __SET__MAY[dep][1]; //支点
     for(i=1;i<=may_count;i++){
         int v = __SET__MAY[dep][i];//当前可能点 v
+
+        //如果是邻居结点，就直接跳过下面的程序，
+        //进行下一轮的循环。显然能让程序运行下去的，只有两种，
+        //一种是v就是u结点本身，另一种是v不是u的邻居结点。
+        if( g[u][v]) continue;
         /* 下一层的now点 */
         set_opt::U(__SET__NOW[dep],__SET__NOW[dep+1],v);
         /* 下一层的may点 */
@@ -71,13 +76,20 @@ void dfs(int dep){
 
 
 void init(){
-     scanf("%d%d",&n,&m); //读入点,边的个数
      int i,u,v;
+     scanf("%d%d",&n,&m);
+     max_clique_cnt = 0;
+     memset(g,0,sizeof(g));
+     memset(__SET__USED,0,sizeof(__SET__USED));
+     memset(__SET__MAY,0,sizeof(__SET__MAY));
+     memset(__SET__NOW,0,sizeof(__SET__NOW));
+     for(i=1;i<=n;i++){
+         set_opt::push(__SET__MAY[1],i);
+     }
+
      for(i=1;i<=m;i++){
          scanf("%d%d",&u,&v);
          g[u][v] = g[v][u] = 1;
      }
 }
-
-
 endsnippet

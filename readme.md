@@ -69,3 +69,12 @@ Plug 'Rainboylvx/rSnip'
 | 算法       | 触发       | 位置                            |
 |------------|------------|---------------------------------|
 | 极大团计数 | `jidatuan` | algorithm/graph/极大团.snippets |
+
+## 数论
+
+| 算法       | 触发           | 位置                         |
+|------------|----------------|------------------------------|
+| gcd        | gcd            | math/gcd.snippets            |
+| exgcd      | exgcd          | math/gcd.snippets            |
+| 线性欧拉筛 | euler_prime    | math/euler_function.snippets |
+| 欧拉函数   | euler_function | math/euler_function.snippets |

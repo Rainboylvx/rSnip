@@ -52,9 +52,15 @@ snippet sc "scanf" b
 scanf("${0}");
 endsnippet
 
+
+# return
+snippet "re (\S+)" "return" ir
+return `!p snip.rv=match.group(1)`;
+endsnippet
+
 #return 0;
-snippet re "return 0" b
-return 0;
+snippet re "return 0" i
+return;
 endsnippet
 
 snippet p_bin "输出对应二进制的函数" b

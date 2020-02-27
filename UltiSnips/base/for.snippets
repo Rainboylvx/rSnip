@@ -45,21 +45,21 @@ For(`!p snip.rv=shorForArugments([match.group(1),'',match.group(2)])`){
 endsnippet
 
 # define for i,[1],[n]
-snippet "f(\S+) *" "fo(i,[1],n) " ir
+snippet "f(\S+) *" "fo(i,[1],n) " br
 For(`!p snip.rv=shorForArugments(list(match.groups())+['',''])`){
 	$0
 }
 endsnippet
 
 # define for [i],[1],n
-snippet "f +(\S+) *" "fo(i,[1],n) " ir
+snippet "f +(\S+) *" "fo(i,[1],n) " br
 For(`!p snip.rv=shorForArugments(['','']+list(match.groups()))`){
 	$0
 }
 endsnippet
 
 # define for [i],[1],[n]
-snippet "f *" "fo(i,[1],n) " ir
+snippet "f *" "fo(i,[1],n) " br
 For(i,1,n){
 	$0
 }
@@ -69,28 +69,28 @@ endsnippet
 # ============== reverse for
 
 # define rof i,1,n
-snippet "rf(\S+) +(\S+) +(\S+) *" "ro(i,n,1) " ir
+snippet "rf(\S+) +(\S+) +(\S+) *" "ro(i,n,1) " br
 Rof(`!p snip.rv=shorForArugments(match.groups())`){
 	$0
 }
 endsnippet
 
 # define rof i,[1],n
-snippet "rf(\S+) +(\S+) *" "ro(i,n,[1]) " ir
+snippet "rf(\S+) +(\S+) *" "ro(i,n,[1]) " br
 Rof(`!p snip.rv=shorForArugments(list(match.groups())+['1'])`){
 	$0
 }
 endsnippet
 
 # define rof [i],n,[1]
-snippet "rf +(\S+) *" "ro([i],n,[1]) " ir
+snippet "rf +(\S+) *" "ro([i],n,[1]) " br
 Rof(`!p snip.rv=shorForArugments(['']+list(match.groups())+['1'])`){
 	$0
 }
 endsnippet
 
 # define rof [i],[1],[n]
-snippet "rf *" "fo(i,[1],n) " ir
+snippet "rf *" "fo(i,[1],n) " br
 Rof(i,n,1){
 	$0
 }
@@ -99,8 +99,9 @@ endsnippet
 
 ## edge_u for
 
-snippet ee "Each_e(u)" b
-Each_e(u) {
+snippet ee "Each edge from head u" b
+for(${1:i}= head[${2:u}]; ~$1 ;$1 =e[$1].next){
+	int &v = e[$1].v; int &w = e[$1].w;
 	$0
 }
 endsnippet

@@ -66,9 +66,10 @@ Plug 'Rainboylvx/rSnip'
 
 ## 算法-图
 
-| 算法       | 触发       | 位置                            |
-|------------|------------|---------------------------------|
-| 极大团计数 | `jidatuan` | algorithm/graph/极大团.snippets |
+| 算法       | 触发         | 位置                            |
+|------------|--------------|---------------------------------|
+| 极大团计数 | `jidatuan`   | algorithm/graph/极大团.snippets |
+| 强连通分量 | `tarjan_qlt` | algorithm/graph/tarjan.snippets |
 
 ## 数论
 

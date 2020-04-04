@@ -1,7 +1,6 @@
-snippet xds "线段树" b
-
+# sgt == segment tree
+snippet sgt "线段树" b
 int n,m;
-
 /* =====  线段树区间更新--lazy [区间加,区间求和] ====*/
 
 /* 区间加,区间求和 的线段树 */
@@ -69,7 +68,5 @@ void build(int l,int r,int rt){
     build(m+1,r,rson(rt));
     pushup(rt);
 }
-
 /* ====== 线段树区间更新--lazy-- END ====*/
-
 endsnippet

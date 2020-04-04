@@ -2,6 +2,26 @@
 # 作用: 存储图的数据结构
 # author:Rainboy
 
+snippet xlx "向量星" b
+/* ========= 向量星 ${1:1} =========*/
+namespace xlx$1 {
+    int head[maxn],edge_cnt = 0;
+    struct _e{ int u,v,w,next; }e[maxe];
+    void inline xlx_init(){ edge_cnt = 0; memset(head,-1,sizeof(head)); } 
+    void addEdge(int u,int v,int w=0){ e[++edge_cnt] = { .u = u,.v=v,.w=w,.next =head[u]}; head[u] = edge_cnt; }
+}
+/* ========= 向量星 $1 END =========*/
+endsnippet
+
+## edge_u for
+snippet ee "Each edge from head u" b
+for(${1:i}= xlx${2:1}::head[${3:u}]; ~$1 ;$1 = xlx$2::e[$1].next){
+	int &v = xlx$2::e[$1].v; int &w = xlx$2::e[$1].w;
+	$0
+}
+endsnippet
+
+
 
 # 类型-向量星
 snippet xlx_class "向量星-类" b

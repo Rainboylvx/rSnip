@@ -97,12 +97,3 @@ Rof(i,n,1){
 endsnippet
 
 
-## edge_u for
-
-snippet ee "Each edge from head u" b
-for(${1:i}= head[${2:u}]; ~$1 ;$1 =e[$1].next){
-	int &v = e[$1].v; int &w = e[$1].w;
-	$0
-}
-endsnippet
-

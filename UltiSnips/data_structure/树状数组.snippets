@@ -1,3 +1,17 @@
+snippet BIT "树状数组" b
+/* ============ BIT BEG ============ */
+namespace BIT {
+    /* 单点更新 区间查询 */
+    ll c[maxn],size;
+    #define lowbit(x) (x &(-x))
+    inline void bit_init(ll s=maxn){ memset(c,0,sizeof(c)); size=s;}
+    void update_s(ll pos,ll num)    { for(;pos <=size ; pos+=lowbit(pos)) c[pos] +=num; }
+    ll query(ll pos)  { ll sum =0; for( ;pos >0; pos-=lowbit(pos)) sum+=c[pos]; return sum;}
+}
+/* ============ BIT END ============ */
+endsnippet
+
+
 # 求区间最值-最大值
 snippet bit_max "Description" b
 /* ============ BIT range Max BEGIN ============ */

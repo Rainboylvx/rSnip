@@ -1,0 +1,31 @@
+snippet topOrder "拓扑排序-stack" b
+/* ================= 拓扑排序 =================*/
+namespace TopOrder {
+    int indegree[maxn];
+    int i,j,k;
+    stack<int> sta;
+    vector<int> order;
+
+    int kahn(int n){
+        int out_cnt = 0; //用于计算输出的顶点个数
+        for( i =1;i<=n;i++)
+            if( !indegree[i] ) 
+                sta.push(i);
+
+        while( !sta.empty()){
+            int t = sta.top();sta.pop();
+            order.push_back(t);
+            out_cnt++;
+
+            for( i =head[t] ; ~i ; i = e[i].next){
+                int &v = e[i].v;
+                indegree[v]--;
+                if( !indegree[v] ) sta.push(v);
+            }
+
+        }
+        return out_cnt;
+    }
+}
+/* ================= 拓扑排序 end =================*/
+endsnippet

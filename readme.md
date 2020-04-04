@@ -60,9 +60,10 @@ Plug 'Rainboylvx/rSnip'
 
 ### 树与图
 
-| 算法   | 触发  | 位置                           |
-|--------|-------|--------------------------------|
-| 并查集 | `bcj` | data_structure/并查集.snippets |
+| 算法     | 触发       | 位置                              |
+|----------|------------|-----------------------------------|
+| 并查集   | `bcj`      | data_structure/并查集.snippets    |
+| 树上倍增 | `lca_jump` | algorithm/graph/树上倍增.snippets |
 
 ## 算法-图
 

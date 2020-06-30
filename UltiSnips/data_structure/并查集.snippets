@@ -2,21 +2,9 @@ snippet bcj "并查集" b
 /* ================= 并查集 =================*/
 namespace BCJ {
 	int fa[maxn];
-	inline void bcj_init(int x){ //并查集 初始化
-		int i;
-		for(i=1;i<=x;i++) fa[i] = i;
-	}
-	int find(int x){ //查找 and 压缩
-		if( x == fa[x]) return x;
-		fa[x] = find(fa[x]);
-		return fa[x];
-	}
-	
-	void merge(int x,int y){ //合并
-		int fx = find(x);
-		int fy = find(y);
-		fa[fx] = fy;
-	}
+	inline void bcj_init(int x){ for(int i=1;i<=x;i++) fa[i] = i; }
+	int find(int x){ if( x == fa[x]) return x; return fa[x] = find(fa[x]); }
+	void merge(int x,int y){ fa[find[x]] = find(y); }
 }
 /* ================= 并查集 end =================*/
 ${0}

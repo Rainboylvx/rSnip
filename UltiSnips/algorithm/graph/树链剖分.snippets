@@ -1,0 +1,54 @@
+# hpsn = heavy path split node
+snippet hpsn "树链剖分-点权" b
+// 求两个点之间的距离,边长1： dep[u]+dep[v] - 2*dep[lca(u,a)]
+// 求两个点之间的距离,边长w： 用len
+/* ================= 树链剖分-点权 BEG ======*/
+namespace HPSN {
+    using namespace xlx1;
+    int fa[maxn],son[maxn],dep[maxn],size[maxn],top[maxn],p[maxn],   fp[maxn],dfn=0;
+    /*  点的父亲 重儿子    深度      子树大小   链顶      点的新编号 p相反*/
+
+    void hps_init(){ memset(son,-1,sizeof(son)); dfn=0;}
+    void dfs1(int u,int d,int f){
+        dep[u] = d,fa[u] = f,size[u] = 1;
+        for( int i = head[u];~i ; i = e[i].next){
+            if( e[i].v != f ){
+                dfs1(e[i].v, d+1, u);
+                size[u] += size[e[i].v];
+                if( son[u] == -1 || size[e[i].v] > size[son[u]]) son[u] = e[i].v;
+            }
+        }
+    }
+
+    void dfs2(int u,int sf){
+        p[u] = ++dfn, fp[p[u]] = u;
+        top[u] = sf;
+        if ( son[u] == -1) return;
+        dfs2( son[u],sf); //先访问重儿子
+        for(int i = head[u]; ~i ; i =e[i].next) if( e[i].v != son[u] && e[i].v != fa[u]) dfs2(e[i].v,e[i].v);
+    }
+
+    node find_lca(int u,int v){
+        int f1 = top[u],f2 = top[v] ,tmp=0;
+        node ret = {0,-0x7f7f7f7f};
+        while( f1 != f2){
+            if( dep[f1] < dep[f2]) std::swap(f1,f2),std::swap(u,v); //u是支链
+            // p[f1] -- p[u] 这条边要改变
+            // //[改]
+            ret = ret + query(p[f1], p[u], 1, n, 1);
+            u = fa[f1];f1 = top[u];
+        }
+        if( dep[u] > dep[v] ) std::swap(u,v);
+        // p[u]--p[v] 这条边要改变
+        // //[改]
+        ret = ret + query(p[u], p[v], 1, n, 1);
+        return ret;
+    }
+}
+/* ================= 树链剖分-点权 END ======*/
+endsnippet
+
+# hpse = heavy path split edge
+snippet hpse "树链剖分-边权" b
+//TODO
+endsnippet

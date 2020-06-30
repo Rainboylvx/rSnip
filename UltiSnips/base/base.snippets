@@ -58,15 +58,17 @@ int `!p snip.rv=tranSeq2(match.group(2),'='+match.group(1))`;
 endsnippet
 
 
-# temp 模板
-snippet temp "简单模板" b
+snippet ssn "简单模板" b
+/* author: Rainboy  email: rainboylvx@qq.com  time: `date` */
 #include <bits/stdc++.h>
-#define For(i,start,end) for(i = start ;i <= end; ++i)
-#define Rof(i,start,end) for(i = start ;i >= end; --i)
-#define Each_e(u)	for(i = head[u]; ~i ; i = e[i].next)
 using namespace std;
 
-$0
+const int maxn = 1e5+5;
+int n,m;
+
+void init(){
+	$0
+}
 
 int main(){
 
@@ -87,6 +89,13 @@ snippet sn  "代码模板" b
 #define Rof(i,start,end) for(i = start ;i >= end; --i)
 typedef long long ll;
 using namespace std;
+template<class T>
+void read(T &a){
+    a = 0;T flag = 1; char ch = getchar();
+    while( ch < '0' || ch > '9'){ if( ch == '-') flag = -1; ch = getchar(); }
+    while( ch >= '0' && ch <= '9'){ a = a*10 + ch-'0'; ch = getchar(); }
+    a*=flag;
+}
 
 /* ======= 全局变量 =======*/
 const int maxn = 1e5+5;

@@ -13,3 +13,19 @@ LL pow(LL a,LL n,LL p){
 	return ret % p;
 }
 endsnippet
+
+snippet quick_pow "快速幂取余" b
+template <class T>
+class quick_pow {
+    T mod;
+    quick_pow(T m):mod(m){}
+    T operator()(T a,T k){
+        T base = a,ret = 1;
+        for( ; a ; a >>=1){
+            if( a & 1 ) ret = ( ret * base) % mod;
+            base = (base * base) % mod;
+        }
+        return ret;
+    }
+};
+endsnippet

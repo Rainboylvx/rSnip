@@ -77,6 +77,7 @@ Plug 'Rainboylvx/rSnip'
 |快读|read|base/快读|
 |超级快读|fastio|base/快读|
 |快速幂取余|qsm|base/快速幂|
+|快速幂取余|quick_pow|base/快速幂|
 |离散化|lsh|base/离散化|
 |作者信息|author_info|c|
 |#include|in|c|

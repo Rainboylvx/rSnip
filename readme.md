@@ -56,7 +56,8 @@ Plug 'Rainboylvx/rSnip'
 |kmp算法|kmp|algorithm/string/kmp|
 |trie树|trie|algorithm/string/trie|
 |换行 printf\n|prn|base/base|
-|简单模板|ssn|base/base|
+|代码模板-简单|ssn|base/base|
+|代码模板-复杂|sn|base/base|
 |maxn|maxn|base/base|
 |double max|double_max|base/base|
 |struct|st|base/base|

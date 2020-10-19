@@ -30,15 +30,20 @@ for(`!p snip.rv=forArgument(match.groups())`){
 }
 endsnippet
 
+# line for 
+snippet "lf(\w*) *(\S*) +(\S+) *(-*)" "f[iter] start end [-]" br
+for(`!p snip.rv=forArgument(match.groups())`) $0
+endsnippet
+
 # define for i,1,n
-snippet "f(\S+) +(\S+) +(\S+) *" "fo(i,1,n) " ir
+snippet "f(\S+) +(\S+) +(\S+) *" "For(i,1,n) " br
 For(`!p snip.rv=shorForArugments(match.groups())`){
 	$0
 }
 endsnippet
 
 # define for i,[1],n
-snippet "f(\S+) +(\S+) *" "fo(i,[1],n) " ir
+snippet "f(\S+) +(\S+) *" "fo(i,[1],n) " br
 For(`!p snip.rv=shorForArugments([match.group(1),'',match.group(2)])`){
 	$0
 }

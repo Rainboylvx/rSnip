@@ -63,7 +63,12 @@ snippet ssn "代码模板-简单" b
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn = 1e5+5;
+#ifndef DEBUG
+#define debug(...)
+#endif
+
+const int maxn = 1e6+5,maxe = 1e6+5; //点与边的数量
+
 int n,m;
 
 void init(){
@@ -88,6 +93,11 @@ snippet sn "代码模板-复杂" b
 #define Rof(i,start,end) for(i = start ;i >= end; --i)
 typedef long long ll;
 using namespace std;
+
+#ifndef DEBUG
+#define debug(...)
+#endif
+
 template<class T>
 void read(T &a){
     a = 0;T flag = 1; char ch = getchar();
@@ -97,8 +107,7 @@ void read(T &a){
 }
 
 /* ======= 全局变量 =======*/
-const int maxn = 1e5+5;
-const int maxe = 1e6+5;
+const int maxn = 1e6+5,maxe = 1e6+5; //点与边的数量
 int n,m;
 
 /* ======= 全局变量 END =======*/

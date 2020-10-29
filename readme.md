@@ -8,7 +8,7 @@ code snippets for noier
 
  - [安装](#安装)
  - [语法](#语法)
-   - [for 循环](#for 循环)
+   - [for 循环](#for-循环)
 
 ## 安装
 

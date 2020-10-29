@@ -35,11 +35,11 @@ Plug 'Rainboylvx/rSnip'
 
 ### for 循环
 
-
-[I][r][l]f		-> for([int] i=1; i<=n; ++i)
-[I][r][l]f N		-> for([int] i=1; i<=N; ++i)
-[I][r][l]f S N	-> for([int] i=S; i<=N; ++i)
-[I][r][l]fj s n	-> for([int] j=s; i<=N; ++j)
+|-----------------|-----------------------------|
+| [I][r][l]f      | `for([int] i=1; i<=n; ++i)` |
+| [I][r][l]f N    | `for([int] i=1; i<=N; ++i)` |
+| [I][r][l]f S N  | `for([int] i=S; i<=N; ++i)` |
+| [I][r][l]fj s n | `for([int] j=s; i<=N; ++j)` |
 
 ## 算法
 

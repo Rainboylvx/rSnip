@@ -30,18 +30,20 @@ endglobal
 
 
 # printf
+# pr[flag] [t1] [t1] [t3] [blank]
 snippet "pr(\w+)? ((\S+ )*\S+)( )?" "printf" br
 printf("${1:`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`}${2:\n}",`!p snip.rv=tranSeq(match.group(2))`);
 endsnippet
 
 # scanf
+# sc[flag] t1 t2 t3
 snippet "sc(\w+)? ((\S+ )*\S+)( )?" "scanf" ir
 scanf("`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`",`!p snip.rv=tranSeq(match.group(2),'' if match.group(1)=='s' else '&')`);
 endsnippet
 
 
-
-snippet "func (\w+)?" "定义函数" br 
+#F
+snippet "F (\w+)?" "定义函数" br 
 ${1:int} `!p snip.rv=match.group(1)`(${2: 参数}){
 	${0}
 }
@@ -57,8 +59,8 @@ snippet "i(\d+) ((\w+ )*\w+)" "int 定义,初始化" br
 int `!p snip.rv=tranSeq2(match.group(2),'='+match.group(1))`;
 endsnippet
 
-
-snippet ssn "代码模板-简单" b
+# simple code template
+snippet sct "代码模板-简单" b
 /* author: Rainboy  email: rainboylvx@qq.com  time: `date` */
 #include <bits/stdc++.h>
 using namespace std;
@@ -81,16 +83,15 @@ int main(){
 }
 endsnippet
 
-snippet sn "代码模板-复杂" b
+# code template
+snippet ct "代码模板-复杂" b
 /*-----------------
-* author: Rainboy
-* email: rainboylvx@qq.com
+* author: `!v g:global_author`
+* email: `!v g:global_email`
 * time: `date`
 * problem: ${1: online_judge}-${2:_id }
 *----------------*/
 #include <bits/stdc++.h>
-#define For(i,start,end) for(i = start ;i <= end; ++i)
-#define Rof(i,start,end) for(i = start ;i >= end; --i)
 typedef long long ll;
 using namespace std;
 
@@ -109,10 +110,11 @@ void read(T &a){
 /* ======= 全局变量 =======*/
 const int maxn = 1e6+5,maxe = 1e6+5; //点与边的数量
 int n,m;
+$0
 
 /* ======= 全局变量 END =======*/
 void init(){
-	${3:xlx1::xlx_init(); }
+
 }
 
 
@@ -120,7 +122,6 @@ int main(){
 	clock_t program_start_clock = clock(); //开始记时
 	//===================
 	init();
-	$0
 
 	//=================== 
 	fprintf(stderr,"\n Total Time: %lf ms",double(clock()-program_start_clock)/(CLOCKS_PER_SEC / 1000));
@@ -138,7 +139,6 @@ endsnippet
 snippet maxn "maxn" b
 const int max${1:n} = 1e${2:5}+5;
 endsnippet
-
 
 snippet double_max "double max" b
 /*

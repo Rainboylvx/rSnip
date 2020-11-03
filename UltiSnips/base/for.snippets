@@ -32,61 +32,79 @@ def shorForArugments(args,FOR=True):
 	return "{name},{start},{end}".format(name=name,start=start,end=end)
 endglobal
 
+#============================ fi 1 n
+
 # define for i,1,n
-snippet "(I?)(r?)f(\S+) +(\S+) +(\S+) *" "for i,1,n" br
+snippet "(I?)(r?)(?<!l)f(\w+) +(\w+) +(\w+) *" "for i,1,n" br
 for(`!p snip.rv=forArgument([match.group(3),match.group(4),match.group(5)],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`){
 	$0
 }
 endsnippet
 # define LineFor i,1,n
-snippet "(I?)(r?)lf(\S+) +(\S+) +(\S+) *" "LineFor i,1,n" br
+snippet "(I?)(r?)lf(\w+) +(\w+) +(\w+) *" "LineFor i,1,n" br
 for(`!p snip.rv=forArgument([match.group(3),match.group(4),match.group(5)],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`) $0
 endsnippet
 
+#============================ f 1 n
+
+# define for i,1,n
+snippet "(I?)(r?)(?<!l)f (\w+) +(\w+) *" "for i,1,n" br
+for(`!p snip.rv=forArgument(['i',match.group(3),match.group(4)],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`){
+	$0
+}
+endsnippet
+# define Linefor i,1,n
+snippet "(I?)(r?)lf (\w+) +(\w+) *" "for i,1,n" br
+for(`!p snip.rv=forArgument(['i',match.group(3),match.group(4)],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`) $0
+endsnippet
 
 
+#============================ fi n
 
 # define for i,[1],n
-snippet "(I?)(r?)f(\S+) +(\S+) *" "for i,[1],n" br
-for(`!p snip.rv=forArgument([match.group(3),match.group(4),'n'],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`){
+snippet "(I?)(r?)(?<!l)f(\w+) +(\w+) *" "for i,[1],n" br
+for(`!p snip.rv=forArgument([match.group(3),'1',match.group(4)],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`){
 	$0
 }
 endsnippet
 # define LineFor i,[1],n
-snippet "(I?)(r?)f(\S+) +(\S+) *" "for i,[1],n" br
-for(`!p snip.rv=forArgument([match.group(3),match.group(4),'n'],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`) $0
+snippet "(I?)(r?)lf(\w+) +(\w+) *" "for i,[1],n" br
+for(`!p snip.rv=forArgument([match.group(3),'1',match.group(4)],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`) $0
 endsnippet
 
 
+#============================ fi 
 
 # define for i,[1],[n]
-snippet "(I?)(r?)f(\S+) *" "for i,[1],[n]" br
+snippet "(I?)(r?)(?<!l)f(\w+) *" "for i,[1],[n]" br
 for(`!p snip.rv=forArgument([match.group(3),'1','n'],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`){
 	$0
 }
 endsnippet
 # define LineFor i,[1],[n]
-snippet "(I?)(r?)lf(\S+) *" "LineFor i,[1],[n]" br
+snippet "(I?)(r?)lf(\w+) *" "LineFor i,[1],[n]" br
 for(`!p snip.rv=forArgument([match.group(3),'1','n'],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`) $0
 endsnippet
 
 
 
+#============================ f n
 
 # define for [i],[1],n
-snippet "(I?)(r?)f +(\S+) *" "for [i],[1],n" br
+snippet "(I?)(r?)(?<!l)f +(\w+) *" "for [i],[1],n" br
 for(`!p snip.rv=forArgument(['i','1',match.group(3)],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`){
 	$0
 }
 endsnippet
 # define LineFor [i],[1],n
-snippet "(I?)(r?)lf +(\S+) *" "for" br
+snippet "(I?)(r?)lf +(\w+) *" "for" br
 for(`!p snip.rv=forArgument(['i','1',match.group(3)],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`) $0
 endsnippet
 
+#============================ f
 
 # define for [i],[1],[n]
-snippet "(I?)(r?)f *" "for(i=1;i<=n;i++) or Reverse" br
+snippet "(I?)(r?)(?<!l)f *" "for(i=1;i<=n;i++) or Reverse" br
 for(`!p snip.rv=forArgument(['i','1','n'],useInt=bool(match.group(1)),Reverse=bool(match.group(2)))`){
 	$0
 }

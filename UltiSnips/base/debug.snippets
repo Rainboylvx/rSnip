@@ -1,12 +1,29 @@
 ### =======  调试相关 =======
 
-snippet ifd "#define DEBUG" b
+snippet DD "#define DEBUG" b
 #define DEBUG
 ${0}
 endsnippet
 
-snippet debug "#ifdef DEBUG" b
+snippet dd "debug" b
+#define debug(...) fprintf(stderr, __VA_ARGS__)
+endsnippet
+
+snippet db "#ifdef DEBUG" b
 #ifdef DEBUG
 	${0}
 #endif
 endsnippet
+
+# printf
+# d[flag] [t1] [t1] [t3] [blank]
+snippet "d(\w+)? ((\S+ )*\S+)( )?" "printf" br
+debug("${1:`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`}${2:\n}",`!p snip.rv=tranSeq(match.group(2))`);
+endsnippet
+
+# debug_info
+# di[flag] [t1] [t1] [t3] [blank]
+snippet "di(\w+)? ((\S+ )*\S+)( )?" "printf" br
+debug_info("${1:`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`}${2:\n}",`!p snip.rv=tranSeq(match.group(2))`);
+endsnippet
+

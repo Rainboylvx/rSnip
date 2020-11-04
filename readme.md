@@ -73,18 +73,55 @@ for 循环这里最复杂触发，最简单的使用：输入一个`f`(后面可
 
 ![](./images/for-f.gif)
 
-`f[循环名]`
+`f[循环变量名]`可以设定循环变量名
 
 ![](./images/for-fi.gif)
 
-| 触发            | 结果                        |
-|-----------------|-----------------------------|
-| [I][r][l]f      | `for([int] i=1; i<=n; ++i)` |
-| [I][r][l]f N    | `for([int] i=1; i<=N; ++i)` |
-| [I][r][l]f S N  | `for([int] i=S; i<=N; ++i)` |
-| [I][r][l]fj s n | `for([int] j=s; i<=N; ++j)` |
+`f [循环结束]`
 
-例子1： `tody`
+![](./images/for-end.gif)
+
+`f [循环开始] [循环结束]`
+
+![](./images/for-s-n.gif)
+
+`f[循环变量名] [循环开始] [循环结束]`
+
+![](./images/for-fv-s-n.gif)
+
+单行for，`lf[循环变量名] [循环开始] [循环结束]`
+
+![](./images/lfj-s-n.gif)
+
+其它的标记
+
+ - `I` 在for的`()`使用int
+ - `r` r=reverse 反向，例如`fi 1 n` ==>
+     ```
+     for(i=n;i>=1;--i){
+
+     }
+     ```
+ - `l` l=line 单行for，例如`lf x` => `for(i=1;i<=x;++i)`
+
+这些标记是可选的，放在`f`的前边。
+
+| 触发              | 结果                        |
+|-------------------|-----------------------------|
+| `[I][r][l]f`      | `for([int] i=1; i<=n; ++i)` |
+| `[I][r][l]f n`    | `for([int] i=1; i<=N; ++i)` |
+| `[I][r][l]f s n`  | `for([int] i=S; i<=N; ++i)` |
+| `[I][r][l]fj s n` | `for([int] j=s; i<=N; ++j)` |
+
+
+例子：使用 `I`，`r` 标记的`lf`，会创建一个单行的反向`for`，且会使用`int`,
+
+![](./images/for-Irlf-1-100.gif)
+
+例子：同上，只是没有使用`l`标记
+
+![](./images/Irfj-1-100.gif)
+
 
 ## 算法
 

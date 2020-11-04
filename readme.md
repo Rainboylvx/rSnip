@@ -4,6 +4,10 @@ code snippets for noier
 
 提供给noier的代码片段
 
+## 触发键的说明 !important
+
+如果你使用的是[RainboyVim](https://github.com/Rainboylvx/RainboyVim)这个配置，那么触发的按键是**<kbd>tab</kbd>**，如果不，那么就是你设置的`UltiSnips`触发的键。
+
 ## 目录
 
  - [安装](#安装)

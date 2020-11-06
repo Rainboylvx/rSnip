@@ -157,3 +157,35 @@ struct ${1:node} {
 	$0
 };
 endsnippet
+
+
+
+### =======  调试相关 =======
+
+snippet DD "#define DEBUG" b
+#define DEBUG
+${0}
+endsnippet
+
+snippet dd "debug" b
+#define debug(...) fprintf(stderr, __VA_ARGS__)
+endsnippet
+
+snippet debug "#ifdef DEBUG" b
+#ifdef DEBUG
+	${0}
+#endif
+endsnippet
+
+# printf
+# d[flag] [t1] [t1] [t3] [blank]
+snippet "d(\w+)? ((\S+ )*\S+)( )?" "debug printf" br
+debug("${1:`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`}${2:\n}",`!p snip.rv=tranSeq(match.group(2))`);
+endsnippet
+
+# debug_info
+# D[flag] [t1] [t1] [t3] [blank]
+snippet "D(\w+)? ((\S+ )*\S+)( )?" "debug printf" br
+debug_info("${1:`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`}${2:\n}",`!p snip.rv=tranSeq(match.group(2))`);
+endsnippet
+

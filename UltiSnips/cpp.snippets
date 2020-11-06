@@ -1,6 +1,7 @@
 extends c
 extends base
 extends math
+extends tools
 extends algorithm/graph
 extends algorithm/search
 extends algorithm/string
@@ -85,6 +86,7 @@ for (decltype($1.size()) ${2:i} = 0; $2 != ${1}.size(); ${3:++}$2) {
     ${4:TODO}
 }
 endsnippet
+
 # C++11风格for循环遍历（可读写）
 snippet F
 for (auto& e : ${1:c}) {
@@ -114,25 +116,7 @@ endsnippet
 snippet throw
 th (${1:/* condition */});
 endsnippet
-#=================================
-#容器
-#=================================
-# std::vector
-snippet vec
-vector<${1:char}>   v${2};
-endsnippet
-# std::list
-snippet lst
-list<${1:char}> l${2};
-endsnippet
-# std::set
-snippet set
-set<${1:key}>   s${2};
-endsnippet
-# std::map
-snippet map
-map<${1:key}, ${2:value}>   m${3};
-endsnippet
+
 #=================================
 #语言扩展
 #=================================

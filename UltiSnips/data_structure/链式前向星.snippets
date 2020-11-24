@@ -8,7 +8,7 @@ struct linkList {
     typedef struct {int u,v,w,next;} edge;
     edge e[maxe];
     int h[maxn],edge_cnt=0;
-    linkList(){
+    linkList(){	//构造函数
         edge_cnt=0;
         memset(h,-1,sizeof(h));
     }
@@ -23,7 +23,7 @@ struct linkList {
     edge& operator[](int i){
         return e[i];
     }
-};
+} e;
 endsnippet
 
 snippet ef "linkList forEach" b

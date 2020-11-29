@@ -67,6 +67,7 @@ endsnippet
 # sc[flag] t1 t2 t3
 snippet "sc(\w+)? ((\S+ )*\S+)( )?" "scanf" ir
 scanf("`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4),'')`",`!p snip.rv=tranSeq(match.group(2),'' if match.group(1)=='s' else '&')`);
+$0
 endsnippet
 
 

@@ -1,0 +1,81 @@
+#===================================================
+# File:		   template.snippets
+# Description: template cpp code
+# Maintainer:  Rainboy<rainboylvx@qq.com>
+# Licence:     Vim licence
+# Website:     http://github.com/rainboylvx/rSnip
+# ============================================================================
+
+# simple code template
+snippet tt "代码模板-简单" b
+/* author: `!v g:global_author` email: `!v g:global_email`  time: `date` */
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+#ifndef DEBUG  /*----------------------------------*/
+#define log(...)
+#endif		   /*----------------------------------*/
+
+const int maxn = 1e6+5,maxe = 1e6+5; //点与边的数量
+int n,m;
+${1:/* 定义全局变量 */}
+
+inline void init(){
+	${2: /* 数据读入 */}
+}
+
+int main(){
+	init();
+
+	return 0;
+}
+endsnippet
+
+# code template
+snippet ttt "代码模板-复杂" b
+/*-------------------------------------------------------------------
+* author:  `!v g:global_author`
+* email:   `!v g:global_email`
+* time:    `date`
+* problem: ${1:online_judge}-${2:_id }
+*------------------------------------------------------------------*/
+#include <bits/stdc++.h>
+typedef long long ll;
+typedef __int128  bigi; //big int
+using namespace std;
+
+#ifndef DEBUG  /*----------------------------------*/
+#define log(...)
+#endif		   /*----------------------------------*/
+
+
+template<class T> //快读
+void read(T &a){
+    a = 0;T flag = 1; char ch = getchar();
+    while( ch < '0' || ch > '9'){ if( ch == '-') flag = -1; ch = getchar(); }
+    while( ch >= '0' && ch <= '9'){ a = a*10 + ch-'0'; ch = getchar(); }
+    a*=flag;
+}
+
+/* ======= 全局变量 =======*/
+const int maxn = 1e6+5,maxe = 1e6+5; //点与边的数量
+int n,m;
+${3:/* 定义全局变量 */}
+
+/* ======= 全局变量 END =======*/
+
+inline void init(){
+	${4: /* 数据读入 */}
+}
+
+int main(){
+	clock_t program_start_clock = clock(); //开始记时
+	//===================
+	init();
+
+	//=================== 
+	fprintf(stderr,"\n Total Time: %lf ms",double(clock()-program_start_clock)/(CLOCKS_PER_SEC / 1000));
+	return 0;
+}
+endsnippet

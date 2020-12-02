@@ -28,7 +28,7 @@ endsnippet
 # else if
 snippet ei
 else if ( ${1:/* condition */} ) {
-    ${2:TODO}
+    $1
 }
 endsnippet
 
@@ -52,7 +52,7 @@ endsnippet
 # While Loop
 snippet wh
 while ( ${1:/* condition */} ) {
-    ${2:TODO}
+    $0
 }
 endsnippet
 
@@ -65,7 +65,7 @@ endsnippet
 # Do While Loop
 snippet do
 do {
-    ${1:TODO}
+    ${1}
 } while ( ${0:/* condition */} );
 endsnippet
 
@@ -79,5 +79,10 @@ switch( ${1:something} ){
     defaul:
         break;
 }
+endsnippet
+
+# typedef 
+snippet tf "typedef" b
+typedef ${1:typename} ${2:alias};
 endsnippet
 

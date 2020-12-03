@@ -36,7 +36,6 @@ endsnippet
 
 snippet prn "换行 printf\n" b
 printf("\n");
-$0
 endsnippet
 
 
@@ -44,7 +43,6 @@ endsnippet
 # pr[flag] [t1] [t1] [t3] [blank or ,]
 snippet "pr(\w+)? (([^,\s]+ )*[^,\s]+)([ ,])?" "printf" br
 printf("`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`",`!p snip.rv=tranSeq(match.group(2))`);
-$0
 endsnippet
 
 #======================
@@ -53,21 +51,19 @@ endsnippet
 #======================
 snippet "pn(\w+)? (([^,\s]+ )*[^,\s]+)([ ,])?" "printf" br
 printf("`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4))`\n",`!p snip.rv=tranSeq(match.group(2))`);
-$0
 endsnippet
 
 
 #======================
 # scanf
 #======================
-snippet sc "abc" b
+snippet sc "scanf" b
 scanf("${1:foo}",${2:bar})
 endsnippet
 
 # sc[flag] t1 t2 t3
 snippet "sc(\w+)? ((\S+ )*\S+)( )?" "scanf" ir
 scanf("`!p snip.rv=tranFlag(match.group(1),match.group(2),match.group(4),'')`",`!p snip.rv=tranSeq(match.group(2),'' if match.group(1)=='s' else '&')`);
-$0
 endsnippet
 
 
@@ -87,7 +83,6 @@ endsnippet
 #============================================
 snippet "i ((\w+ )*\w+)" "int 定义" br
 int `!p snip.rv=tranSeq(match.group(1))`;
-$0
 endsnippet
 
 # int 定义变量,初始化 i0 a b c => int a=0,b=0,c=0;

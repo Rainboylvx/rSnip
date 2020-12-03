@@ -12,22 +12,13 @@ snippet tt "代码模板-简单" b
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-
-#ifndef DEBUG  /*----------------------------------*/
-#define log(...)
-#endif		   /*----------------------------------*/
-
 const int maxn = 1e6+5,maxe = 1e6+5; //点与边的数量
+
 int n,m;
 ${1:/* 定义全局变量 */}
 
-inline void init(){
-	${2: /* 数据读入 */}
-}
-
 int main(){
-	init();
-
+	$0
 	return 0;
 }
 endsnippet

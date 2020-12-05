@@ -25,6 +25,12 @@ def tranSeq2(inp,sep=''):
 	return temp.join(a)+sep
 endglobal
 
+global !p
+def tranSeq3(inp,sep=''):
+	a = inp.split()
+	return sep.join(a)
+endglobal
+
 
 snippet pr "printf\n" b
 printf("${0:some string}");
@@ -88,6 +94,10 @@ endsnippet
 # int 定义变量,初始化 i0 a b c => int a=0,b=0,c=0;
 snippet "i(\d+) ((\w+ )*\w+)" "int 定义,初始化" br
 int `!p snip.rv=tranSeq2(match.group(2),'='+match.group(1))`;
+endsnippet
+
+snippet "ii ((\w+ )*\w+)" "int a,int b" ir
+int `!p snip.rv=tranSeq3(match.group(1),',int ')`
 endsnippet
 
 

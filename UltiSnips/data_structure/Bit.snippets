@@ -4,15 +4,15 @@ template<typename T,int N=maxn>
 struct Bit {
     T c[N];
     //Bit(){}
-    inline T lowbit(T x) { return x & -x;      }
-    inline T fa(int p)   { return p+lowbit(p); }
-    inline T left(int p) { return p-lowbit(p); }
+    inline int lowbit(int x) { return x & -x;      }
+    inline int fa(int p)     { return p+lowbit(p); }
+    inline int left(int p)   { return p-lowbit(p); }
 
-    void update(T p, T v){
+    void update(int p, T v){
         for( ; p <= N; p = fa(p) ) c[p] += v;
     }
 
-    T query(T p){ //前缀合
+    T query(int p){ //前缀合
         T sum=0;
         for( ;p > 0 ; p = left(p)) sum+= c[p];
         return sum;

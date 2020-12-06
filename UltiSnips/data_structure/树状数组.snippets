@@ -2,23 +2,23 @@
 snippet bit "树状数组" b
 template<typename T,int N=maxn>
 struct Bit {
-    T c[maxn];
+    T c[N];
     //Bit(){}
     inline T lowbit(T x) { return x & -x;      }
     inline T fa(int p)   { return p+lowbit(p); }
     inline T left(int p) { return p-lowbit(p); }
 
     void update(T p, T v){
-        for( ; c[p] <= N; p = fa(p) ) c[p] += v;
+        for( ; p <= N; p = fa(p) ) c[p] += v;
     }
 
-    void query(T p){ //前缀合
+    T query(T p){ //前缀合
         T sum=0;
         for( ;p > 0 ; p = left(p)) sum+= c[p];
         return sum;
     }
 };
-Bit<int,maxn> bit;
+Bit<ll> bit;
 endsnippet
 
 snippet bit_range_point "树状数组-区间修改 单点查询" b

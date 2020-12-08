@@ -230,4 +230,5 @@ for 循环这里最复杂触发，最简单的使用：输入一个`f`(后面可
 | 6  | <kbd>bit_range_range</kbd> | 树状数组 区间修改 区间查询 |
 | 7  | <kbd>bit_max</kbd>         | 树状数组 区间最值          |
 | 8  | <kbd>bit_2D</kbd>          | 树状数组 二维              |
+| 9  | <kbd>sgt_point</kbd>       | 线段树 单点更新 区间查询   |
 

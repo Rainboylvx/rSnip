@@ -5,11 +5,10 @@ struct Dinic {
     inline void set(int a,int b){s =a , t = b;}
     queue<int> q;
     bool bfs(){
-        memset(dep,0,sizeof(dep));
         while( !q.empty()) q.pop();
         dep[s] = 1;
         q.push(s);
-        for(int i=s;i<=t;++i) cur[i] = e.h[i];
+        for(int i=s;i<=t;++i) cur[i] = e.h[i],dep[i]=0;
         
         while ( !q.empty() ) {
             int u = q.front(); q.pop();
@@ -27,7 +26,7 @@ struct Dinic {
     int dfs(int u,int c){
         if( u == t ) return c;
         int used = 0;
-        for(int &i=cur[i];~i;i=e[i].next){
+        for(int &i=cur[u];~i;i=e[i].next){
             int &v = e[i].v, &w = e[i].w;
             if( dep[v] == dep[u]+1 && w !=0 ) {
                 int tmp = dfs(v,min(c-used,w));
@@ -45,7 +44,8 @@ struct Dinic {
     }
     int work(){
         int ans = 0;
-        while ( bfs() ) ans += dfs(u,0x7f7f7f7f);
+        while ( bfs() ) 
+            ans += dfs(s,0x7f7f7f7f);
         return ans;
     }
 } dinic;

@@ -3,6 +3,10 @@ snippet tt "template" b
 from functools import reduce
 from itertools import *
 
+# 读入所有的数据
+data = [ list(map(int,line.split())) for line in sys.stdin ]
+
+$0
 endsnippet
 
 snippet read "input" b

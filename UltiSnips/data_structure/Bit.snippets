@@ -65,22 +65,21 @@ Bit<int,maxn> bit;
 endsnippet
 
 snippet bit_max "树状数组 区间最值" b
-template<typename T,int N=maxn,typename comp=greater<T> >
 struct Bit_max {
     T a[maxn],c[maxn]; // a是原数组
     comp com;
-    inline T lowbit(T x) { return x & -x;      }
-    inline T fa(int p)   { return p+lowbit(p); }
-    inline T left(int p) { return p-lowbit(p); }
+    inline int lowbit(T x) { return x & -x;      }
+    inline int fa(int p)   { return p+lowbit(p); }
+    inline int left(int p) { return p-lowbit(p); }
     inline T g(T a ,T b) { return com(a,b) ? a : b;}
-    void update_by_child(T p,T v){ //alias push
+    void update_by_child(int p,T v){ //alias push
         c[p] = a[p] = v;
-        T lb = lowbit(p);
+        int lb = lowbit(p);
         for(int i=1;i < lb ;i <<= 1)
-            c[p] = com(c[p],c[p-i]);
+            c[p] = g(c[p],c[p-i]);
     }
 
-    void update(T p,T v){
+    void update(int p,T v){
         update_by_child(p, v);
         T t = c[p];
         for( p = fa(p); p<=N ; p = fa(p)){
@@ -90,16 +89,16 @@ struct Bit_max {
     }
 
     T query(int l,int r){ // 求区间最值
-        T ret = c[l];
+        T ret = a[l];
         for( ; l <=r; ){
             int next = left(r)+1;
-            if( next >= l ) ret = com(ret,c[r]) , r = next-1;
-            else            ret = com(ret,a[r]) , r--;
+            if( next >= l ) ret = g(ret,c[r]) , r = next-1;
+            else            ret = g(ret,a[r]) , r--;
         }
         return ret;
     }
 };
-Bit_max<int,maxn> bit;
+Bit_max<ll> bit;
 endsnippet
 
 snippet BIT_2D "二维BIT" b

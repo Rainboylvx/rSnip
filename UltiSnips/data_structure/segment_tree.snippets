@@ -121,7 +121,43 @@ struct sgt_range {
 sgt_range<ll> sgt;
 endsnippet
 
-snippet sgt_debug "线段树调试" b
+snippet sgt_debug "线段树Debug with dot" b
+        vector<string> v;
+        char fmt[1000];
+        string a = "hell";
+        int to_dot_cnt;
+        void to_dot () {
+            v.clear();
+            ofstream dot;
+            sprintf(fmt,"%04d.dot",++to_dot_cnt);
+            dot.open(fmt);
+            dot << "graph g{\n node[shape=record];\n";
+            _to_dot(1,n,1);
+            for (auto& e : v) {
+                dot<< e;
+            }
+            dot<< "}" <<endl;
+            dot.close();
+        }
+        void _to_dot(int l,int r,int p) {
+            sprintf(fmt,"%d[label=\"%d|flag=%d|%d|%d\"];\n",p,tr[p],flag[p],l,r);
+            v.push_back(string(fmt));
+            if( l == r){
+                return ;
+            }
+            int m = mid(l,r);
+
+            sprintf(fmt,"%d--%d;\n",p,lp(p));
+            v.push_back(string(fmt));
+            _to_dot(l,m,lp(p));
+            sprintf(fmt,"%d--%d;\n",p,rp(p));
+            v.push_back(string(fmt));
+            _to_dot(m+1,r,rp(p));
+        }
+
+endsnippet
+
+snippet sgt_debug_2 "线段树调试_2" b
 #ifdef DEBUG
     void _dfs_print(ll l,ll r,ll o,FILE *dot){
         if( o >>1) fprintf(dot,"%d--%d;\n",o>>1,o);

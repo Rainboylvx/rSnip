@@ -1,0 +1,10 @@
+snippet Random "Random产生器(c++11)" b
+struct Random {
+    random_device rd;
+    mt19937 engine{rd()};
+    uniform_int_distribution<> dis;
+    Random(){}
+    Random(int l,int r){ dis = uniform_int_distribution<> (l,r); }
+    int operator()(){ return dis(engine); }
+} rnd;
+endsnippet

@@ -74,6 +74,19 @@ endsnippet
 
 
 #======================
+# cin cout
+#======================
+
+snippet "ci ((\S+ )*\S+)( )?" "cin" ir
+cin >> `!p snip.rv = tranSeq3(match.group(1)," >> ")`;
+endsnippet
+
+snippet "co ((\S+ )*\S+)( )?" "cout" ir
+cout << `!p snip.rv = tranSeq3(match.group(1)," <<\" \"<< ")` << endl;
+endsnippet
+
+
+#======================
 # funtion
 #======================
 snippet "F (\w+)?" "定义函数" br 

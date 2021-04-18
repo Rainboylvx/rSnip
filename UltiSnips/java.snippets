@@ -14,8 +14,16 @@ def nl(snip):
         snip.rv += " "
 endglobal
 
-snippet cln "file classname"
-${1:`!p snip.rv = snip.basename or "untitled"`}
+snippet fn "file classname"
+`!p snip.rv = snip.basename or "untitled"` $0
+endsnippet
+
+snippet cln "file classname init" b
+public `!p snip.rv = snip.basename or "untitled"` {
+    public static void main(String[] args) {
+        $0
+    }
+};
 endsnippet
 
 snippet ab "abstract" b

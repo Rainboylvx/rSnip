@@ -98,10 +98,34 @@ snippet tem "template<>" b
 template<typename T,${1:typename ${2:name}}>
 endsnippet
 
-# class
+# ========================= Class =========================
 
 snippet cla "class" b
 class ${1:name} {
 	$0
 };
+endsnippet
+
+snippet pub "public:" b
+public:
+	$0
+endsnippet
+
+snippet pri "private:" b
+private:
+	$0
+endsnippet
+
+snippet pro "protect:" b
+protect:
+	$0
+endsnippet
+
+snippet try "try catch" b
+try {
+	$0
+}
+catch(std::exception & e){
+    std::cerr << " Exception : " << e.what() << "\n";
+}
 endsnippet

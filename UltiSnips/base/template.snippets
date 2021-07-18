@@ -48,6 +48,11 @@ void read(T &a){
     while( ch >= '0' && ch <= '9'){ a = a*10 + ch-'0'; ch = getchar(); }
     a*=flag;
 }
+struct Freopen {
+    Freopen(const string s){ freopen((s+".in").c_str(), "r", stdin); freopen((s+".out").c_str(), "w", stdout); }
+    ~Freopen(){ fclose(stdin); fclose(stdout); }
+};
+
 
 /* ======= 全局变量 =======*/
 const int maxn = 1e6+5,maxe = 1e6+5; //点与边的数量
@@ -62,6 +67,7 @@ inline void init(){
 
 int main(){
 	clock_t program_start_clock = clock(); //开始记时
+	//Freopen ___freopen___ = "name";
 	//===================
 	init();
 

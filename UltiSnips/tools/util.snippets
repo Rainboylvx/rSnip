@@ -13,3 +13,14 @@ struct Random {
     Random create(int l,int r){ return Random(l,r); } //工厂模式
 } rnd;
 endsnippet
+
+snippet fre "freopen" b
+struct __FRE__  {
+    __FRE__(const std::string & name){
+        freopen((name+".in").c_str(),"r",stdin);
+        freopen((name+".out").c_str(),"w",stdout);
+    }
+    ~__FRE__(){ fclose(stdin); fclose(stdout); }
+};
+#define FRE(name) __FRE__ __myFre__(name)
+endsnippet

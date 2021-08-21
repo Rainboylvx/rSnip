@@ -25,6 +25,13 @@ link_directories(../jsoncpp-1.9.4/build/lib)
 
 add_executable(test ${DIR_SRCS})
 
+file(GLOB TESTS "tests/*.cpp")
+foreach(f ${TESTS})
+    string(REPLACE ".cpp" "" testname ${f})
+    string(REPLACE ${CMAKE_CURRENT_SOURCE_DIR}/tests/ "" name ${testname})
+    add_executable(${name} ${f})
+endforeach(f)
+
 # 添加库
 target_link_libraries(test jsoncpp_static)
 endsnippet

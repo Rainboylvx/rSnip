@@ -78,11 +78,19 @@ endsnippet
 #======================
 
 snippet "ci ((\S+ )*\S+)( )?" "cin" ir
-cin >> `!p snip.rv = tranSeq3(match.group(1)," >> ")`;
+std::cin >> `!p snip.rv = tranSeq3(match.group(1)," >> ")`;
+endsnippet
+
+snippet co "cout" b
+std::cout << $0 ;
+endsnippet
+
+snippet coe "cout" b
+std::cout << $0 << std::endl;
 endsnippet
 
 snippet "co ((\S+ )*\S+)( )?" "cout" ir
-cout << `!p snip.rv = tranSeq3(match.group(1)," <<\" \"<< ")` << endl;
+std::cout << `!p snip.rv = tranSeq3(match.group(1)," <<\" \"<< ")` << std::endl;
 endsnippet
 
 

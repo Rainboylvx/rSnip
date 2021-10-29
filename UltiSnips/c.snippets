@@ -7,12 +7,14 @@ snippet author_info "作者信息" i
 endsnippet
 
 snippet // "行内注释" b
-/* ${0} */
+/**
+ * ${0}
+ */
 endsnippet
 
-snippet in "#include" b
-#include <${1:cstdio>}
-endsnippet
+#snippet in "#include" b
+##include <${1:cstdio>}
+#endsnippet
 
 snippet main "main()" b
 int main(){

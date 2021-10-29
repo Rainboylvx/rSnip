@@ -8,9 +8,14 @@ extends algorithm/string
 extends data_structure
 extends tools/util.snippets
 
-snippet using "标准命名空间" b
+snippet us "标准命名空间" b
 using namespace ${1:std};
 endsnippet
+
+snippet in "#include" b
+#include <${1:iostream>}
+endsnippet
+
 
 #=================================
 #结构语句
@@ -128,4 +133,11 @@ try {
 catch(std::exception & e){
     std::cerr << " Exception : " << e.what() << "\n";
 }
+endsnippet
+
+snippet name "namespace" b
+namespace ${1:name} {
+	$0
+} // end namespace $1
+
 endsnippet

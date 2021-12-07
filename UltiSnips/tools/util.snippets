@@ -14,6 +14,32 @@ struct Random {
 } rnd;
 endsnippet
 
+snippet random2 "第二种random" b
+//from https://stackoverflow.com/a/323302
+struct random2 {
+    random2() { srand(mix(clock(), time(NULL), getpid())); }
+    //std::hash<std::thread::id>{}(std::this_thread::get_id())
+    //产生 [l,r] 范围内的整数
+    int get(int l,int r){ return rand() %(r-l+1) + l; }
+    // http://www.concentric.net/~Ttwang/tech/inthash.htm
+    unsigned long mix(unsigned long a, unsigned long b, unsigned long c)
+    {
+        a=a-b;  a=a-c;  a=a^(c >> 13);
+        b=b-c;  b=b-a;  b=b^(a << 8);
+        c=c-a;  c=c-b;  c=c^(b >> 13);
+        a=a-b;  a=a-c;  a=a^(c >> 12);
+        b=b-c;  b=b-a;  b=b^(a << 16);
+        c=c-a;  c=c-b;  c=c^(b >> 5);
+        a=a-b;  a=a-c;  a=a^(c >> 3);
+        b=b-c;  b=b-a;  b=b^(a << 10);
+        c=c-a;  c=c-b;  c=c^(b >> 15);
+        return c;
+    } 
+
+} rnd2;
+endsnippet
+
+
 snippet fre "freopen" b
 struct __FRE__  {
     __FRE__(const std::string & name){

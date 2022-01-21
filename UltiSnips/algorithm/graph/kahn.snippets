@@ -1,32 +1,36 @@
 snippet kahn "kahn,求拓扑排序" b
 
 /* ================= 拓扑排序 =================*/
-int kahn(){
-    //count用于计算输出的顶点个数
-    int count=0;
-    int i,j,k;
-    //把入度为0的顶点入栈
-    for (i=1;i<=n;i++){
-        if( indgree[i] == 0)
-            push(i);
-    }
+template<int N>
+struct Kahn {
+    int indgree[N]; //存点的入度的
+    int seq[N]; //排序好的序列
+    int idx=0; //下标
+    stack<int> sta;
 
-    while (!empty()) {//如果栈为空，则结束循环
-        int t = pop();
-        printf("%d ",t); //输出
-        count++;
+    inline void indegree_plus_1(int n){ ++indgree[i];}
 
-        // t点周围的点,入度-1
-        for(i=first[t];i!=-1;i = e[i].next){
-            int v = e[i].v;
-            indgree[v]--;
-            if( indgree[v] == 0) //如果入度减少到为0，则入栈
-                push(v);
+    /**
+     * n : 最大的那个点的编号
+     * 最小点的编号默认是1
+     */
+    void work(int n,linkList& e){
+        for(int i=1;i<=n;i++)
+            if( indgree[i] == 0) 
+                sta.push(i);
+        while ( !sta.empty()) {
+            int u = sta.top();
+            seq[++idx] = u; //排序
+            sta.pop();
+            for(int i = e.h[u]; i!=-1;i = e[i].next){
+                int v = e[i].v;
+                if( --indgree[v] == 0)
+                    sta.push(v);
+            }
         }
     }
-
-    return count;
-}
+};
+Kahn<100> kahn;
 /* ================= 拓扑排序 end =================*/
 ${0}
 endsnippet

@@ -21,6 +21,13 @@ if __name__ == `!p snip.rv = get_quoting_style(snip)`__main__`!p snip.rv = get_q
 	${1:${VISUAL:main()}}
 endsnippet
 
+snippet readFile "readFile" b
+def readFile(fileName):
+	with open(fileName) as f:
+		lines = [line.rstrip() for line in f]
+		return lines
+endsnippet
+
 snippet with "with" b
 with ${1:expr}`!p snip.rv = " as " if t[2] else ""`${2:var}:
 	${3:${VISUAL:pass}}
